@@ -17,14 +17,14 @@ pub struct Dungeon {
 impl Dungeon {
     pub fn new() -> Dungeon {
         let mut rng = rand::thread_rng();
-        let floor_count = rng.gen_range(1, 5);
+        let floor_count = rng.gen_range(3, 7);
 
         // build floor vector
         let mut floors = Vec::new();
         for f in 0..floor_count {
             println!("Making floor {}", f+1);
-            let width = rng.gen_range(1, 10);
-            let height = rng.gen_range(1, 10);
+            let width = rng.gen_range(2, 10);
+            let height = rng.gen_range(2, 10);
             floors.push(Floor { width, height });
         }
 
@@ -40,9 +40,9 @@ impl Dungeon {
 }
 
 pub fn run() -> Result<(), Box<dyn Error>> {
-    let mut d: Dungeon = Dungeon::new();
-    for floor_num in 0..d.floor_count{
-        d.print_floor(usize::from(floor_num));
+    let mut dungeon: Dungeon = Dungeon::new();
+    for floor_num in 0..dungeon.floor_count{
+        dungeon.print_floor(usize::from(floor_num));
     }
     Ok(())
 }
