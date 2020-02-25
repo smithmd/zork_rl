@@ -22,7 +22,7 @@ impl Dungeon {
         // build floor vector
         let mut floors = Vec::new();
         for f in 0..floor_count {
-            println!("Making floor {}", f+1);
+            println!("Making floor {}", f + 1);
             let width = rng.gen_range(2, 10);
             let height = rng.gen_range(2, 10);
             floors.push(Floor { width, height });
@@ -33,7 +33,7 @@ impl Dungeon {
 
     pub fn print_floor(&mut self, number: usize) {
         // get floor at {number}
-        println!("Floor {}", number+1);
+        println!("Floor {}", number + 1);
         let floor = &self.floors[number];
         println!("\t{}w x {}h", floor.width, floor.height);
     }
@@ -41,7 +41,7 @@ impl Dungeon {
 
 pub fn run() -> Result<(), Box<dyn Error>> {
     let mut dungeon: Dungeon = Dungeon::new();
-    for floor_num in 0..dungeon.floor_count{
+    for floor_num in 0..dungeon.floor_count {
         dungeon.print_floor(usize::from(floor_num));
     }
     Ok(())
